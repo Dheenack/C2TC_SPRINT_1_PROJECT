@@ -66,6 +66,7 @@ public class ShopOwnerController {
 			exist_so.setShopOwnerGender(so1.getShopOwnerGender());
 			exist_so.setShopName(so1.getShopName());
 			exist_so.setShopType(so1.getShopType());
+			exist_so.setShopOwnerGender(so1.getShopOwnerGender());
 			sos.update(exist_so);
 			
 			return new ResponseEntity<ShopOwner>(exist_so,HttpStatus.OK);
