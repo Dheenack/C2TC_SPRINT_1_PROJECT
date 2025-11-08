@@ -22,6 +22,10 @@ public class ShopOwner {
 	private String shopLocation;
 	@Column(name="shop_type")
 	private String shopType; // Retailer/ wholesale
+	
+	public ShopOwner() {
+	    // Required by Jackson for deserialization
+	}
 
 	public ShopOwner(int shopOwnerId, String shopOwnerName, String shopName, String shopType) {
 		super();

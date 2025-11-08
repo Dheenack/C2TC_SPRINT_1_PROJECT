@@ -25,16 +25,21 @@ public class ShopOwnerController {
 	@Autowired
 	private ShopOwnerService sos;
 	
+	@GetMapping("/")
+	public String send() {
+		return "hello, welcome to Dheena Krishna's Shop module";
+	}
 	@GetMapping("/shopownerservice")
 	public List<ShopOwner> list(){
 		return sos.listAll();
 	}
 	
 	@PostMapping("/shopownerservice")
-	public void add(@RequestBody ShopOwner so1) {
-		sos.save(so1);
-		
+	public ResponseEntity<ShopOwner> add(@RequestBody ShopOwner so1) {
+	    sos.save(so1);
+	    return new ResponseEntity<>(so1, HttpStatus.CREATED);
 	}
+
 	
 	@GetMapping("/shopownerservice/{id}")
 	public ResponseEntity<ShopOwner> get(@PathVariable Integer id){
@@ -52,7 +57,7 @@ public class ShopOwnerController {
 		sos.delete(id);
 	}
 	
-	@PutMapping
+	@PutMapping("/shopownerservice/{id}")
 	public ResponseEntity<ShopOwner> update(@PathVariable Integer id, @RequestBody ShopOwner so1){
 		try {
 			ShopOwner exist_so = sos.get(id);
